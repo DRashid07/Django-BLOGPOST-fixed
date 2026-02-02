@@ -67,6 +67,8 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,related_name='comments',on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     text = models.TextField()
+    class Meta:
+        unique_together = ('user','post')
     def _str_(self):
         return self.text[:20]
     
