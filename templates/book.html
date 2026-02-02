@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-900 text-center">Kitablar</h1>
+    <div class="flex flex-wrap -m-4">
+      {% for book in books %}
+      <div class="p-4 md:w-1/2 w-full">
+        <div class="h-full bg-gray-100 p-8 rounded">
+          <h2 class="text-xl font-bold text-gray-900 mb-2">{{ book.title }}</h2>
+          <p class="text-sm text-gray-600 mb-3">Müəllif: {{ book.author }}</p>
+          <p class="leading-relaxed">{{ book.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

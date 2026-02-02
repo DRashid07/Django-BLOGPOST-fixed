@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="text-gray-800 body-font">
+  <div class="container px-5 py-10 mx-auto">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-xl font-semibold">#{{ tag.name }}</h1>
+      <a href="{% url 'allposts' %}" class="text-sm text-pink-500 hover:underline">Bütün postlar</a>
+    </div>
+
+    {% if posts %}
+    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {% for post in posts %}
+      <a href="{% url 'post' post.slug %}" class="block rounded-lg border border-gray-200 hover:shadow transition">
+        <div class="h-32 bg-cover bg-center" style="background-image: url('{{ post.thumbnail.url }}')"></div>
+        <div class="p-3 space-y-1.5">
+          <h2 class="text-base font-semibold text-gray-900 line-clamp-2">{{ post.title }}</h2>
+          <p class="text-sm text-gray-600 line-clamp-2">{{ post.overview }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-gray-600">Bu tag üçün hələ post yoxdur.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock content %}
